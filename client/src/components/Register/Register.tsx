@@ -1,14 +1,14 @@
 // Importing required components
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// import SignupService from "../../services/signin-up/SignupService";
+import RegisterService from "../../services/RegisterService/RegisterService";
 import logo from "../../assets/images/login_bg.png";
 import image2 from "../../assets/images/image2.png";
 import "../../App.css";
 import { toast } from "react-toastify";
 
 // Creating signup component
-const Signup = () => {
+const Register = () => {
   // Usesate hooks which initializs state value as an empty string
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -22,20 +22,20 @@ const Signup = () => {
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const navigate = useNavigate();
 
-//   function checkBreakpoint() {
-//     if (window.matchMedia("(max-width: 600px)").matches) {
-//       // console.log(document.getElementById('my-div').classList)
-//       document
-//         .getElementById("my-div")
-//         .classList.remove("login-image-container2");
-//       document.getElementById("my-div").classList.add("new");
-//     } else {
-//       document.getElementById("my-div").classList.remove("new");
-//       document.getElementById("my-div").classList.add("login-image-container2");
-//     }
-//   }
+  //   function checkBreakpoint() {
+  //     if (window.matchMedia("(max-width: 600px)").matches) {
+  //       // console.log(document.getElementById('my-div').classList)
+  //       document
+  //         .getElementById("my-div")
+  //         .classList.remove("login-image-container2");
+  //       document.getElementById("my-div").classList.add("new");
+  //     } else {
+  //       document.getElementById("my-div").classList.remove("new");
+  //       document.getElementById("my-div").classList.add("login-image-container2");
+  //     }
+  //   }
 
-//   window.addEventListener("resize", checkBreakpoint);
+  //   window.addEventListener("resize", checkBreakpoint);
 
   const validateEmail = (inputEmail: string) => {
     console.log(inputEmail);
@@ -68,7 +68,7 @@ const Signup = () => {
         currentDate.getDate()
       );
 
-    //   if (inputDateObj < eighteenYearsAgo || inputDateObj === "") {
+      //   if (inputDateObj < eighteenYearsAgo || inputDateObj === "") {
       if (inputDateObj < eighteenYearsAgo || inputDateObj === null) {
         setIsOver18(true);
       } else {
@@ -119,7 +119,7 @@ const Signup = () => {
       if (password !== confirmpassword) {
         setPasswordsMatch(false);
       } else {
-        SignupService.userRegistration(
+        RegisterService.userRegistration(
           firstname,
           lastname,
           email,
@@ -256,4 +256,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
