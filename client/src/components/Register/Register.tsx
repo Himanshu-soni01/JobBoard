@@ -79,37 +79,12 @@ const Register = () => {
     }
   };
 
-  // const validateDob = (inputDob) => {
-  //   const dobRegex = /^\d{2}-\d{2}-\d{4}$/;
-  //   console.log("id", inputDob);
-  //   if (dobRegex.test(inputDob)) {
-  //     // setIsValidDob(true);
-
-  //     const today = new Date();
-  //     console.log("TODAY", today);
-  //     const birthDate = new Date(inputDob);
-  //     console.log("bd", birthDate);
-  //     const age = today.getFullYear() - birthDate.getFullYear();
-  //     console.log("age", age);
-  //     setIsOver18(age >= 18);
-  //   } else {
-  //     // setIsValidDob(false);
-  //     setIsOver18(false);
-  //   }
-  // };
-
   const handleDobChange = (e: { target: { value: any; }; }) => {
     const inputDob = e.target.value;
     console.log(inputDob);
     setDob(inputDob);
     // validateDob(inputDob);
     checkDateValidity(inputDob);
-  };
-
-  const matchpasword = (e: any) => {
-    if (confirmpassword != password) {
-      setPasswordsMatch(false);
-    }
   };
 
   // Handlesignup function which performs some validations and calls backend server for storing data in database

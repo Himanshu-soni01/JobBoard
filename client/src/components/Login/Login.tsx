@@ -116,14 +116,6 @@ const Login = () => {
         </div>
         <form className="login-form-container" onSubmit={loginhandle}>
           <h2>Sign In</h2>
-          {/* <input
-            type="email"
-            className="input-field"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          /> */}
           <input
             type="email"
             className={isValidEmail ? "input-field" : "red-border"}
