@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const { login, register, create } = require('../../controller/signin-up/signinUpcontroller');
+const { create, getprojectdetails, } = require("../../controller/projectAllocation/projectAllocationcontroller");
+const { verifyuser } = require("../../middleware/authentication");
 var router = express_1.default.Router();
-router.post('/login', login);
-router.post('/register', register);
-router.get(`/email/:email`, create);
+router.get("/", verifyuser, create);
+router.use("/getproject/:email", getprojectdetails);
 module.exports = router;
-//# sourceMappingURL=signin-uproutes.js.map
+//# sourceMappingURL=jobroutes.js.map

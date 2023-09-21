@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 /* Project components Imports - Start */
 
-import { useState } from 'react';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Login/Login';

@@ -7,7 +7,8 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 
 const signinUp = require("./routes/signin-up/signin-uproutes");
-
+const job = require("./routes/job/jobroutes");
+const appliedjob = require("./routes/appliedJob/appliedjobroutes");
 
 
 dotenv.config();
@@ -26,6 +27,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/api/signinUp", signinUp);
+app.use("api/job",job);
+app.use("api/appliedjob",appliedjob);
+
 const port = process.env.PORT;
 
 

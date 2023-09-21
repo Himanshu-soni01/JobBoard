@@ -124,7 +124,7 @@ p {
 }
 
 .sidebar-content {
-  /* height: 100vh; */
+  height: 90vh;
   padding-top: 1%;
 }
 
@@ -154,7 +154,6 @@ p {
 
 .sidebar-logout {
   width: 55%;
-  height: 28%;
   display: flex;
   justify-content: space-between;
   font-size: 0.7em;
@@ -771,7 +770,7 @@ td {
     height: 1.9rem;
     border-radius: 5px;
     padding-left: 10px;
-    
+
   }
 
   /* For whole creat event form */

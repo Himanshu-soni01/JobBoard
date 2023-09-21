@@ -118,6 +118,7 @@ const Sidebar = () => {
           </ul>
           <div className="sidebar-logout">
             {/* {logindata.first_name} */}
+            HS
             <div style={{ cursor: "pointer" }} onClick={logout}>
               <i className="fa-solid fa-right-from-bracket fa-xl"></i>
             </div>

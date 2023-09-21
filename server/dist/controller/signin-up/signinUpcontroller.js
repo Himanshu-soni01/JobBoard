@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 // const jwt = require("jsonwebtoken");
 // const dotenv = require("dotenv");
-const creating = require("../../sequelize/models");
+const creating = require("../../sequelize/models/signin-up/signinUpmodel");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 dotenv.config();
