@@ -1,20 +1,9 @@
-/* Import Section - Start */
-
-/* React Imports - Start */
-
-import React, { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../App.css";
 import logo from "../../assets/images/jmanLogo.png";
 import Cookies from "js-cookie";
-
-// import loginservice from "../../services/signin-up/loginService";
-
-/* React Imports -End */
-
-/* Import Section - End */
-
-/* Function - Start */
+import loginservice from "../../services/LoginService/LoginService"
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -25,12 +14,12 @@ const Sidebar = () => {
     setShowSidebar(!showSidebar);
   };
 
-  //   useEffect(() => {
-  //     const email = localStorage.getItem("email");
-  //     loginservice.logindata(email).then((response) => {
-  //       setLogindata(response.data);
-  //     });
-  //   }, []);
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    loginservice.logindata(email).then((response: { data: SetStateAction<never[]>; }) => {
+      setLogindata(response.data);
+    });
+  }, []);
 
   const logout = () => {
     Cookies.set("token", "", { expires: new Date(0) });
@@ -38,7 +27,6 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  /* Render View Return - Start */
   return (
     <div>
       <div className={`sidebar ${showSidebar ? "active" : ""}`}>
@@ -80,17 +68,17 @@ const Sidebar = () => {
             <li>
               <Link
                 style={{ color: "white", textDecoration: "none" }}
-                to="/dashboard"
+                to="/dashboard/appliedjob"
               >
-                Events
+                Applied Jobs
               </Link>
             </li>
             <li>
               <Link
                 style={{ color: "white", textDecoration: "none" }}
-                to="/dashboard/projectallocation"
+                to="/dashboard"
               >
-                Project Allocation
+                Job Board
               </Link>
             </li>
             {/* {userdata && userdata.userType === "admin" ? ( */}
@@ -107,14 +95,6 @@ const Sidebar = () => {
               ""
             )} */}
             {/* ) : null} */}
-            <li>
-              <Link
-                style={{ color: "white", textDecoration: "none" }}
-                to="/dashboard/profile"
-              >
-                Profile
-              </Link>
-            </li>
           </ul>
           <div className="sidebar-logout">
             {/* {logindata.first_name} */}
@@ -128,11 +108,6 @@ const Sidebar = () => {
     </div>
   );
 
-  /* Render View Return - End */
 };
-/* Render View Return - End */
 
-/* Function - End */
-
-/* Export default functionName */
 export default Sidebar;

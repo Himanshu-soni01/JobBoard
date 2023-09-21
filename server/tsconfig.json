@@ -10,6 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/sequelize/models/index.tsx", "src/index.tsx"],
   "exclude": ["node_modules"]
 }

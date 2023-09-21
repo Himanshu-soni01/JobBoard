@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 import dotenv from "dotenv";
-const creating = require("../../sequelize/models/db/signinUpmodel");
+const creating = require("../../sequelize/models");
 const bcrypt = require("bcrypt");
 
 dotenv.config();

@@ -1,4 +1,3 @@
-// Importing required components
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import RegisterService from "../../services/RegisterService/RegisterService";
@@ -7,9 +6,7 @@ import image2 from "../../assets/images/image2.png";
 import "../../App.css";
 import { toast } from "react-toastify";
 
-// Creating signup component
 const Register = () => {
-  // Usesate hooks which initializs state value as an empty string
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -87,7 +84,6 @@ const Register = () => {
     checkDateValidity(inputDob);
   };
 
-  // Handlesignup function which performs some validations and calls backend server for storing data in database
   const handleSignUp = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     if (password.length > 6) {

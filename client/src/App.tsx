@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Login/Login';
 import Layout from './components/Layout/Layout';
 import Register from './components/Register/Register';
+import AppliedJob from './components/AppliedJob';
+import JobBoard from './components/JobBoard';
 
 
 /* Project components Imports -End */
@@ -33,10 +35,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/dashboard" element={<Layout />}>
-            {/* <Route path="/dashboard/" element={<Calendar />} />
-            <Route path="/dashboard/projectallocation" element={<ProjectAllocation />} />
-            <Route path="/dashboard/manageevents" element={<ManageEvents />} />
-            <Route path="/dashboard/profile" element={<Profile />} /> */}
+            <Route path="/dashboard" element={<AppliedJob />} />
+            <Route path="/dashboard/jobboard" element={<JobBoard />} />
           </Route>
         </Routes>
       </BrowserRouter>
