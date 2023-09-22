@@ -1,24 +1,13 @@
 const jwt = require("jsonwebtoken");
 import dotenv from "dotenv";
-const creating = require('../../sequelize/models')
+const creating = require("../../sequelize/models");
 const bcrypt = require("bcrypt");
 
 dotenv.config();
 
 const table = creating.signinUp;
 
-const login = async (
-  req: { body: { email: any; password: any } },
-  res: {
-    cookie: (arg0: string, arg1: any) => void;
-    status: (arg0: number) => {
-      (): any;
-      new (): any;
-      json: { (arg0: { token?: any; Error?: string }): void; new (): any };
-    };
-  },
-  next: any
-) => {
+export const login = async (req: any, res: any) => {
   const { email, password } = req.body;
 
   const user = await table.findOne({ where: { email: email } });
@@ -40,25 +29,7 @@ const login = async (
   }
 };
 
-const register = async (
-  req: {
-    body: {
-      first_name?: any;
-      last_name?: any;
-      email: any;
-      dob?: any;
-      password?: any;
-    };
-  },
-  res: {
-    status: (arg0: number) => {
-      (): any;
-      new (): any;
-      json: { (arg0: { error: string }): void; new (): any };
-      send: { (arg0: string): void; new (): any };
-    };
-  }
-) => {
+export const register = async (req: any, res: any) => {
   try {
     const { email } = req.body;
     const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
@@ -87,7 +58,7 @@ const register = async (
   }
 };
 
-const create = async (req: any, res: any) => {
+export const create = async (req: any, res: any) => {
   try {
     const { email } = req.params;
     const gettingdata = await table.findOne({

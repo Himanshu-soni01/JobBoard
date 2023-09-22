@@ -1,14 +1,11 @@
-// import express from "express";
-// const {
-//   create,
-//   getjobdetails,
-// } = require("../../controller/projectAllocation/projectAllocationcontroller");
-// const { verifyuser } = require("../../middleware/authentication");
+import express from "express";
+import { create, getappliedjob } from "../../controller/JobController";
+import {verifyuser} from "../../middleware/authentication";
 
-// var router = express.Router();
+var router = express.Router();
 
-// router.get("/", verifyuser, create);
+router.get("/",verifyuser, create);
 
-// router.use("/getjob/:email", getjobdetails);
+router.get("/getjob/:email", getappliedjob);
 
-// module.exports = router;
+export default router;

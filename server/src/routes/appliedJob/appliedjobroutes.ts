@@ -1,9 +1,11 @@
-import express from 'express';
+import express from "express";
 
-// const {} 
+// const {}
+
+import { getappliedjob } from "../../controller/JobController";
 
 var router = express.Router();
 
-router.use(`/getappliedjob/:email`,);
+router.use(`/getappliedjob/:email`, getappliedjob);
 
-module.exports = router;
+export default router;

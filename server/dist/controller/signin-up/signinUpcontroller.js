@@ -12,13 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.create = exports.register = exports.login = void 0;
 const jwt = require("jsonwebtoken");
 const dotenv_1 = __importDefault(require("dotenv"));
-const creating = require('../../sequelize/models');
+const creating = require("../../sequelize/models");
 const bcrypt = require("bcrypt");
 dotenv_1.default.config();
 const table = creating.signinUp;
-const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     const user = yield table.findOne({ where: { email: email } });
     if (user) {
@@ -40,6 +41,7 @@ const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(201).json({ Error: "User does not exist" });
     }
 });
+exports.login = login;
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.body;
@@ -71,6 +73,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+exports.register = register;
 const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.params;
@@ -85,5 +88,6 @@ const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(400).send({ message: "duplicate" });
     }
 });
-module.exports = { login, register, create };
+exports.create = create;
+module.exports = { login: exports.login, register: exports.register, create: exports.create };
 //# sourceMappingURL=signinUpcontroller.js.map

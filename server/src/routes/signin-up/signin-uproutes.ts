@@ -1,13 +1,16 @@
-import express from 'express';
-
-const {login,register,create} = require('../../controller/signin-up/signinUpcontroller')
+const express = require("express");
+const {
+  login,
+  register,
+  create,
+} = require("../../controller/signin-up/signinUpcontroller");
 
 var router = express.Router();
 
-router.post('/login',login)
+router.post("/login", login);
 
-router.post('/register',register)
+router.post("/register", register);
 
-router.get(`/email/:email`,create);
+router.get(`/email/:email`, create);
 
-module.exports=router;
+export default { login, register, create };

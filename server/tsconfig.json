@@ -10,6 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true
   },
-  "include": ["src/**/*.ts", "src/sequelize/models/index.ts", "src/server.ts", "src/controller/signin-up/signinUpcontroller.ts", "src/sequelize/config/config.ts", "src/sequelize/models/db/appliedjobmodel.ts", "src/sequelize/models/db/jobmodel.ts", "src/sequelize/models/db/signinUpmodel.ts", "src/routes/appliedJob/appliedjobroutes.ts", "src/routes/job/jobroutes.ts", "src/routes/signin-up/signin-uproutes.ts"],
+  "include": ["src/**/*.ts", "src/sequelize/models/index.ts", "src/server.ts", "src/controller/signin-up/signinUpcontroller.ts", "src/sequelize/config/config.ts", "src/sequelize/models/db/appliedjobmodel.ts", "src/sequelize/models/db/jobmodel.ts", "src/sequelize/models/db/signinUpmodel.ts", "src/routes/appliedJob/appliedjobroutes.ts", "src/routes/job/jobroutes.ts", "src/routes/signin-up/signin-uproutes.ts", "src/middleware/authentication.ts"],
   "exclude": ["node_modules"]
 }
