@@ -9,7 +9,7 @@ dotenv.config();
 const table_appliedJob = creating.appliedjob;
 const table_job = join.job;
 
-const create = async (req, res) => {
+const create = async (req: any, res: { send: (arg0: string) => void; status: (arg0: number) => { (): any; new(): any; send: { (arg0: { message: string; }): void; new(): any; }; }; }) => {
     try {
         res.send("from");
     } catch (error) {
@@ -17,7 +17,7 @@ const create = async (req, res) => {
     }
 };
 
-const getappliedjob = async (req, res) => {
+const getappliedjob = async (req: { params: any; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; }): any; new(): any; }; }; send: (arg0: any) => void; }) => {
     try {
         const email = req.params;
         const displaydata = await table_appliedJob.findAll({

@@ -1,1 +1,1 @@
-{"version":3,"file":"appliedjobroutes.js","sourceRoot":"","sources":["../../../src/routes/appliedJob/appliedjobroutes.ts"],"names":[],"mappings":";;;;;AAAA,sDAA8B;AAE9B,IAAI,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAE9B,MAAM,CAAC,GAAG,CAAC,cAAc,CAAC,CAAC"}
+{"version":3,"file":"appliedjobroutes.js","sourceRoot":"","sources":["../../../src/routes/appliedJob/appliedjobroutes.tsx"],"names":[],"mappings":";;;;;AAAA,sDAA8B;AAE9B,YAAY;AAEZ,IAAI,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAE9B,MAAM,CAAC,GAAG,CAAC,uBAAuB,CAAE,CAAC;AAErC,MAAM,CAAC,OAAO,GAAG,MAAM,CAAC"}

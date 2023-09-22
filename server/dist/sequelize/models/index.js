@@ -15,11 +15,10 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
         idle: dbConfig.pool.idle,
     },
 });
-// const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.signinUp = require("./signin-up/signinUpmodel")(sequelize, Sequelize);
+db.signinUp = require("./db/signinUpmodel")(sequelize, Sequelize);
 db.job = require("./db/jobmodel")(sequelize, Sequelize);
-db.appliedjob = require('./db/appliedjob')(sequelize, Sequelize);
-module.exports = db;
+db.appliedjob = require("./db/appliedjobmodel")(sequelize, Sequelize);
+// module.exports = db;
 //# sourceMappingURL=index.js.map

@@ -25,12 +25,12 @@ app.use("/api/signinUp", signinUp);
 app.use("api/job", job);
 app.use("api/appliedjob", appliedjob);
 const port = process.env.PORT;
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
-app.use((req, res) => {
-    res.status(404).send("Route is not found.");
-});
+// app.get("/", (req: any, res: any) => {
+//   res.send("Hello World!");
+// });
+// app.use((req: any, res: any) => {
+//   res.status(404).send("Route is not found.");
+// });
 const db = require("./sequelize/models");
 db.sequelize
     .sync()

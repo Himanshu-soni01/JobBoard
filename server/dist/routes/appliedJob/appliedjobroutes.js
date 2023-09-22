@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+// const {} 
 var router = express_1.default.Router();
-router.use("/appliedjob/");
+router.use(`/getappliedjob/:email`);
+module.exports = router;
 //# sourceMappingURL=appliedjobroutes.js.map

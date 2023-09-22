@@ -10,7 +10,6 @@ const signinUp = require("./routes/signin-up/signin-uproutes");
 const job = require("./routes/job/jobroutes");
 const appliedjob = require("./routes/appliedJob/appliedjobroutes");
 
-
 dotenv.config();
 const app = express();
 
@@ -27,20 +26,18 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/api/signinUp", signinUp);
-app.use("api/job",job);
-app.use("api/appliedjob",appliedjob);
+app.use("api/job", job);
+app.use("api/appliedjob", appliedjob);
 
 const port = process.env.PORT;
 
+// app.get("/", (req: any, res: any) => {
+//   res.send("Hello World!");
+// });
 
-app.get("/", (req:any, res:any) => {
-  res.send("Hello World!");
-});
-
-
-app.use((req:any, res:any) => {
-  res.status(404).send("Route is not found.");
-});
+// app.use((req: any, res: any) => {
+//   res.status(404).send("Route is not found.");
+// });
 
 const db = require("./sequelize/models");
 db.sequelize

@@ -8,12 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// const jwt = require("jsonwebtoken");
-// const dotenv = require("dotenv");
-const creating = require("../../sequelize/models/signin-up/signinUpmodel");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jwt = require("jsonwebtoken");
+const dotenv_1 = __importDefault(require("dotenv"));
+const creating = require('../../sequelize/models');
 const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
-dotenv.config();
+dotenv_1.default.config();
 const table = creating.signinUp;
 const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
@@ -54,57 +57,6 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 };
                 const created_user = yield table.create(usr);
                 res.status(201).json(created_user);
-                var transporter = nodemailer.createTransport({
-                    host: process.env.EMAILHOST,
-                    port: process.env.EMAILPORT,
-                    auth: {
-                        user: process.env.EMAILUSER,
-                        pass: process.env.EMAILPASSWORD,
-                    },
-                    secureConnection: false,
-                    tls: {
-                        rejectUnauthorized: false,
-                    },
-                });
-                var mailOptions = {
-                    from: process.env.EMAILUSER,
-                    to: req.body.email,
-                    subject: "Welcome. Now the real fun begins",
-                    html: `
-            <!DOCTYPE html>
-            <html>
-            <body>
-            <h3>Hello ${req.body.first_name},</h3>
-            <p><strong>Welcome to JMAN Group!</strong></p>
-            <p>We would like to welcome you, and please know how happy we are to be with you. Our hearts are filled with delight, for we finally have you with us! We are so glad to have you here with us today.</p>
-            <div style="color:#251d64">
-            <p>Regards,</p>
-            <p><strong>JMAN Group Ltd </strong></p>
-            <p>Module 0104 (A), First Floor </p>
-            <p>C Block South, Tidel Park </p>
-            <p>4, Rajiv Gandhi Salai, Taramani </p>
-            <p>Chennai 600 113 </p>
-            <p>W:<a href="www.jmangroup.com">www.jmangroup.com </a> </p>
-            <img src="cid:unique@kreata.ee"/>
-            </div>  
-            </body>
-            </html>`,
-                    attachments: [
-                        {
-                            filename: "image.png",
-                            path: "src\\images\\Jmantitle.png",
-                            cid: "unique@kreata.ee", //same cid value as in the html img src
-                        },
-                    ],
-                };
-                transporter.sendMail(mailOptions, function (error, info) {
-                    if (error) {
-                        console.log(error);
-                    }
-                    else {
-                        console.log("email sent", info.response);
-                    }
-                });
             }
             else {
                 res.status(200).send("User already exists");
