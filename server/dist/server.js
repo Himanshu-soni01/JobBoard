@@ -1,18 +1,17 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const dotenv = require("dotenv");
 const cors = require("cors");
+const http = require('http');
+const dotenv = require("dotenv");
 const mysql2 = require("mysql2");
-const cookieParser = require("cookie-parser");
+// const routes = require('./routes/signin-uproutes')
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-const signin_uproutes_1 = __importDefault(require("./routes/signin-up/signin-uproutes"));
-const jobroutes_1 = __importDefault(require("./routes/job/jobroutes"));
-const appliedjobroutes_1 = __importDefault(require("./routes/appliedJob/appliedjobroutes"));
+const cookieParser = require("cookie-parser");
+const job = require("./routes/job/jobroutes");
+const signinUp = require("./routes/signin-up/signin-uproutes");
+const appliedjob = require("./routes/appliedJob/appliedjobroutes");
 dotenv.config();
 const app = express();
 const corsOptions = {
@@ -25,16 +24,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 //routes
-app.use("/api/signinUp", signin_uproutes_1.default);
-app.use("/api/job", jobroutes_1.default);
-app.use("/api/appliedjob", appliedjobroutes_1.default);
+app.use("/signinUp", signinUp);
+app.use("/job", job);
+app.use("/appliedjob", appliedjob);
 const port = process.env.PORT;
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
-app.use((req, res) => {
-    res.status(404).send("Route is not found.");
-});
+// app.use((req: any, res: any) => {
+//   res.status(404).send("Route is not found.");
+// });
 const db = require("./sequelize/models");
 db.sequelize.sync().then(() => {
     app.listen(port, () => {

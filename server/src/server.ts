@@ -1,13 +1,16 @@
 const express = require("express");
-const dotenv = require("dotenv");
 const cors = require("cors");
+const http = require('http');
+const dotenv = require("dotenv");
 const mysql2 = require("mysql2");
-const cookieParser = require("cookie-parser");
+// const routes = require('./routes/signin-uproutes')
+
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
-const signinUp = require("./routes/signin-up/signin-uproutes");
 const job = require("./routes/job/jobroutes");
+const signinUp = require("./routes/signin-up/signin-uproutes");
 const appliedjob = require("./routes/appliedJob/appliedjobroutes");
 
 dotenv.config();
@@ -25,9 +28,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("/api/signinUp", signinUp);
-app.use("/api/job", job);
-app.use("/api/appliedjob", appliedjob);
+app.use("/signinUp", signinUp);
+app.use("/job", job);
+app.use("/appliedjob", appliedjob);
 
 const port = process.env.PORT;
 

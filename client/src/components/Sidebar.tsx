@@ -1,9 +1,9 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../App.css";
-import logo from "../../assets/images/jmanLogo.png";
+import "../App.css";
+import logo from "../assets/images/jmanLogo.png";
 import Cookies from "js-cookie";
-import loginservice from "../../services/LoginService/LoginService"
+import loginservice from "../services/LoginService";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -16,9 +16,11 @@ const Sidebar = () => {
 
   useEffect(() => {
     const email = localStorage.getItem("email");
-    loginservice.logindata(email).then((response: { data: SetStateAction<never[]>; }) => {
-      setLogindata(response.data);
-    });
+    loginservice
+      .logindata(email)
+      .then((response: { data: SetStateAction<never[]> }) => {
+        setLogindata(response.data);
+      });
   }, []);
 
   const logout = () => {
@@ -68,7 +70,7 @@ const Sidebar = () => {
             <li>
               <Link
                 style={{ color: "white", textDecoration: "none" }}
-                to="/dashboard/appliedjob"
+                to="/dashboard"
               >
                 Applied Jobs
               </Link>
@@ -76,7 +78,7 @@ const Sidebar = () => {
             <li>
               <Link
                 style={{ color: "white", textDecoration: "none" }}
-                to="/dashboard"
+                to="/dashboard/jobboard"
               >
                 Job Board
               </Link>
@@ -107,7 +109,6 @@ const Sidebar = () => {
       </div>
     </div>
   );
-
 };
 
 export default Sidebar;

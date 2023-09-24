@@ -1,6 +1,6 @@
 import express from "express";
-import { create, getappliedjob } from "../../controller/JobController";
-import {verifyuser} from "../../middleware/authentication";
+import { create, getappliedjob } from "../controller/JobController";
+import {verifyuser} from "../middleware/authentication";
 
 var router = express.Router();
 

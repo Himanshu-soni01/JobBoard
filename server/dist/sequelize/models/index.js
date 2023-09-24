@@ -21,5 +21,5 @@ db.sequelize = sequelize;
 db.signinUp = require("./db/signinUpmodel")(sequelize, Sequelize);
 db.job = require("./db/jobmodel")(sequelize, Sequelize);
 db.appliedjob = require("./db/appliedjobmodel")(sequelize, Sequelize);
-// module.exports = db;
+module.exports = db;
 //# sourceMappingURL=index.js.map

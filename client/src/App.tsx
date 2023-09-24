@@ -2,31 +2,27 @@
 
 /* React Imports - Start */
 
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /* React Imports -End */
 
 /* Project components Imports - Start */
 
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import Login from './components/Login/Login';
-import Layout from './components/Layout/Layout';
-import Register from './components/Register/Register';
-import AppliedJob from './components/AppliedJob';
-import JobBoard from './components/JobBoard';
-
+import "react-toastify/dist/ReactToastify.css";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Layout from "./components/Layout";
+import AppliedJob from "./components/AppliedJob";
+import JobBoard from "./components/JobBoard";
 
 /* Project components Imports -End */
 
 /* Import Section - End */
 
-
-
 /* Function - Start */
 function App() {
-
   /* Render View Return - Start */
   return (
     <div className="App">
@@ -46,7 +42,6 @@ function App() {
 
   /* Render View Return - End */
 }
-
 
 /* Function - End */
 

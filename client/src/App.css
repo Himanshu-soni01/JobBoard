@@ -1,48 +1,53 @@
-.login-container {
+/* -------------Login and Register CSS starts */
+
+.login-container{
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  flex-direction: row;
 }
 
-.login-image-container {
-  width: 60%;
+.login-image-container{
+  width: 50vw;
+  height: 100vh;
 }
 
-.login-image-container img {
-  width: 90%;
-  height: 115%;
+.login-image-container img{
+  width: 50vw;
+  height: 100vh;
 }
 
-
-
-.login-form {
-  margin-top: 5%;
-  /* margin-right:5%; */
-  padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  background-color: transparent;
-  border: none;
-}
-
-.login-image-container2 {
-  width: 94%;
-}
-
-.login-image-container2 img {
-  width: 90%;
-  height: 115%;
-}
-
-.login-form2 {
-  margin-top: 0%;
-  /* margin-right: 10%; */
+.login-form, .login-form2{
+  width: 50vw;
+  height: 100vh;
   padding: 5px;
   border: 1px solid #ccc;
   background-color: #fff;
   background-color: transparent;
   border: none;
-  margin-left: -9%;
-  /* margin-right: 5%; */
+}
+
+.my-image img{
+  margin-left: 10vw;
+}
+
+.login-form-container{
+  display: flex;
+  flex-direction: column;
+  margin-left: 14vw;
+  height: 50vh;
+}
+
+.login-form-container h2{
+  color: #14017c;
+}
+
+.login-form-container input{
+  width: 20vw;
+}
+
+.login-form-container button{
+  width: 5vw;
+  margin-left: 15vw;
 }
 
 .input-field {
@@ -55,61 +60,29 @@
   outline: none;
 }
 
-.red-border {
-  border: 1px solid red;
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
-  box-sizing: border-box;
-  outline: none;
-
-}
-
 .login-form-container2 {
-  /* background-color: blue; */
-  width: 80%;
-  height: 40%;
-  margin-left: 18%;
-  margin-top: -13%;
-  /* margin-bottom: 100%; */
+  width: 40vw;
+  height: 80vh;
+  margin-left: 10vw;
+  margin-top: 0vh;
 }
 
-.login-btn {
-  background-color: rgb(31, 2, 85);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 6px;
-  margin-left: 30%;
-  position: static;
-  width: 40%;
-  font-size: 100%;
+.login-form-container2 div{
+  /* display: flex; */
 }
 
-.login-btn:hover {
-  background-color: #14017c;
+.login-form-container2 .input-field{
+  width: 15vw;
+  margin-right: 2%;
 }
 
-p {
-  margin-left: 25%;
+.login-form-container2 button{
+  width: 5vw;
+  margin-left: 25.8vw;
+
 }
 
-.my-image {
-  margin-top: 0%;
-  padding-left: 10%;
-  margin-left: 8%;
-  margin-bottom: 10%;
-}
-
-.new {
-  display: none;
-}
-
-.login-form-container h2 {
-  color: rgb(35, 1, 63);
-}
+/* -------------Login and Register CSS ends */
 
 /*--------------------- Sidebar CSS Start */
 
@@ -159,7 +132,7 @@ p {
   font-size: 0.7em;
   color: #f5f5f5;
   font-weight: bolder;
-  margin-top: 75%;
+  margin-top: 15vh;
   padding: 7%;
   border-top: 1px whitesmoke solid;
   border-left: 30px solid transparent;
@@ -168,102 +141,7 @@ p {
 
 /* -----------------------------------sidebar css ends */
 
-
-/*----------------------------------- Calendar CSS start */
-.calendar-area {
-  width: 86.3vw;
-  /* padding-left: 13.7vw; */
-  margin-left: 13.7vw;
-  display: flex;
-  flex-direction: row;
-  /* overflow-y: hidden; */
-  background-color: #543fdc;
-}
-
-.dashboard-header {
-  text-align: start;
-  margin-top: -2.4%;
-  font-size: 24px;
-  font-family: Arial;
-  color: #19105B;
-  font-weight: 600;
-
-}
-
-.fc .fc-toolbar-title {
-  font-size: 1.2em;
-}
-
-.calendar-table {
-  /* display: none; */
-  text-align: center;
-  position: relative;
-  margin-top: -93vh;
-  width: 68vw;
-  margin-left: 1vw;
-}
-
-.calendar-dropdown-area {
-  position: relative;
-  margin: -93vh 0 0 1%;
-  width: 18.5%;
-  background-color: #f4f3f9;
-}
-
-.calendar-dropdownFilter {
-  background-color: #2C3E50;
-  height: 6.7%;
-  border-radius: 0.3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.calendar-dropdownFilter select {
-  width: 80%;
-  height: 1.3rem;
-  border-radius: 0.3rem;
-  outline: none;
-}
-
-.calendar-dropdown-details {
-  /* background-color: #c5bff4; */
-  background-color: #f5f4ff;
-  height: 40.5%;
-  margin-top: 12%;
-  border-radius: 0.3rem;
-  padding: 5%;
-}
-
-.calendar-event-area {
-  background-color: #f5f4ff;
-  height: 40%;
-  border-radius: 0.3rem;
-  margin-top: 1%;
-  padding: 5%;
-}
-
-.calendar-event-area-header,
-.calendar-dropdown-details-header {
-  background-color: red;
-  margin-top: -5%;
-  position: relative;
-  width: 106%;
-  margin-left: -5%;
-  border-top-right-radius: 0.3rem;
-  border-top-left-radius: 0.3rem;
-  padding: 2%;
-  text-align: center;
-  background-color: #14017c;
-  color: white;
-}
-
-/*------------------------------------- Calendar CSS ends */
-
-
-
-
-/*----------------------PROJECT ALLOCATION CSS STARTS --------*/
+/*----------------------Applied jobCSS STARTS --------*/
 table {
   border-collapse: collapse;
   width: 100%;
@@ -278,7 +156,7 @@ td {
 }
 
 th {
-  background: #FEE5EE;
+  background: #fee5ee;
   color: #19105b;
   font: 12.5px arial;
   font-weight: bold;
@@ -294,27 +172,24 @@ td {
   color: white;
 }
 
-.project-search {
+.job-search {
   height: 1.9rem;
   border-radius: 5px;
   padding-left: 10px;
 }
 
-.project-content {
+.job-content {
+  width: 83.5vw;
   flex: 1;
   padding: 20px;
-  /* position: relative; */
   margin-left: 13.5%;
-  margin-top: -58%;
+  margin-top: -105vh;
 }
 
-/*-------------------------------------------project allocation ends-----*/
+/*-------------------------------------------applied job ends-----*/
 
-
-
-/* ------------------------------------------ManageEvent CSS starts */
+/* ------------------------------------------Job Board CSS starts */
 .modal {
-  /* display: none;  */
   position: fixed;
   z-index: 1;
   left: 0;
@@ -342,6 +217,10 @@ td {
   cursor: pointer;
 }
 
+.manageEvent-page{
+  padding-top: 9%;
+}
+
 .search button {
   width: 33%;
   height: 2.2rem;
@@ -367,12 +246,14 @@ td {
   border-radius: 10px;
   margin-top: 8%;
   height: 53vh;
-  box-shadow: 0 24px 38px 3px rgba(226, 218, 218, 0.459), 0 9px 46px 8px rgba(35, 34, 36, 0.661), 0 11px 15px -7px rgba(196, 194, 199, 0.363);
+  box-shadow: 0 24px 38px 3px rgba(226, 218, 218, 0.459),
+    0 9px 46px 8px rgba(35, 34, 36, 0.661),
+    0 11px 15px -7px rgba(196, 194, 199, 0.363);
 }
 
 /* For Heading */
 .event-form-container p {
-  color: #19105B;
+  color: #19105b;
   font-size: 22px;
   font-weight: bold;
   margin-left: 0%;
@@ -388,7 +269,6 @@ td {
   display: block;
   padding-top: 3px;
   margin-bottom: 3px;
-
 }
 
 /* For event name input */
@@ -424,7 +304,6 @@ td {
 .form-desc {
   margin-bottom: 5px;
   padding-top: 10px;
-
 }
 
 /* For Description text area */
@@ -439,7 +318,7 @@ td {
 }
 
 .form-button {
-  background-color: #FF6196;
+  background-color: #ff6196;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -456,7 +335,7 @@ td {
 }
 
 .ad-ev-btn {
-  background-color: #FF6196;
+  background-color: #ff6196;
   padding: 10px 10px 10px 10px;
   border: 0;
   width: 120%;
@@ -506,7 +385,7 @@ td {
 
 .btnnn {
   /* background-color: rgb(119, 7, 106); */
-  background-color: #FF6196;
+  background-color: #ff6196;
   color: white;
   border: 0;
   width: 110%;
@@ -517,7 +396,7 @@ td {
 
 .dlte-btnnn {
   width: 100%;
-  background-color: #FF6196;
+  background-color: #ff6196;
   color: white;
   border: 0;
   height: 27px;
@@ -526,7 +405,7 @@ td {
 }
 
 .events-table th {
-  background-color: #19105B;
+  background-color: #19105b;
   color: white;
   height: 2rem;
 }
@@ -545,27 +424,34 @@ td {
   border-top: dashed 1px black;
   border-bottom: dashed 1px black;
   font-size: 13px;
-  color: #6A6C71;
+  color: #6a6c71;
   font-family: Arial;
   font-weight: 100;
   padding-top: 2%;
 }
 
-.add-event-name-data, .time, .dates {
+.add-event-name-data,
+.time,
+.dates {
   display: flex;
   justify-content: start;
   width: 100%;
   margin-bottom: 2%;
 }
 
-.start-date, .end-date, .start-time, .end-time {
+.start-date,
+.end-date,
+.start-time,
+.end-time {
   margin-left: 0%;
   margin-right: 10%;
   width: 50%;
-
 }
 
-.start-time input, .end-time input, .start-date input, .end-date input {
+.start-time input,
+.end-time input,
+.start-date input,
+.end-date input {
   padding: 10px;
   box-sizing: border-box;
   margin-top: 2%;
@@ -583,11 +469,9 @@ td {
 
 /* ------------------------------------------ManageEvents css ends */
 
-
 /*----------------------------- MEDIA QUERY */
 
 @media only screen and (max-width: 380px) {
-
   /*----------------------Sidebar css starts*/
   body {
     overflow-y: scroll;
@@ -624,8 +508,6 @@ td {
   }
 
   /* -----------------------Sidebar css ends */
-
-
 
   /* --------------------Calendar css Starts */
   .calendar-area {
@@ -715,7 +597,6 @@ td {
 
   /*---------------------- Calendar css ends */
 
-
   /* ------------------------------------Project Allocation CSS starts */
   .project-content {
     height: 30vh;
@@ -725,7 +606,6 @@ td {
   }
 
   /* ----------------------------Project Allocation cs end */
-
 
   /* ------------------------------------------ManageEvent CSS starts */
   .modal {
@@ -760,7 +640,7 @@ td {
   .search button {
     width: 3%;
     height: 2.2rem;
-    background-color: #FF6196;
+    background-color: #ff6196;
     border: 0;
     color: white;
     border-radius: 2px;
@@ -770,7 +650,6 @@ td {
     height: 1.9rem;
     border-radius: 5px;
     padding-left: 10px;
-
   }
 
   /* For whole creat event form */
@@ -784,12 +663,14 @@ td {
     border-radius: 10px;
     margin-top: 8%;
     height: 53vh;
-    box-shadow: 0 24px 38px 3px rgba(226, 218, 218, 0.459), 0 9px 46px 8px rgba(35, 34, 36, 0.661), 0 11px 15px -7px rgba(196, 194, 199, 0.363);
+    box-shadow: 0 24px 38px 3px rgba(226, 218, 218, 0.459),
+      0 9px 46px 8px rgba(35, 34, 36, 0.661),
+      0 11px 15px -7px rgba(196, 194, 199, 0.363);
   }
 
   /* For Heading */
   .event-form-container p {
-    color: #19105B;
+    color: #19105b;
     font-size: 22px;
     font-weight: bold;
     margin-left: 0%;
@@ -805,7 +686,6 @@ td {
     display: block;
     padding-top: 3px;
     margin-bottom: 3px;
-
   }
 
   /* For event name input */
@@ -841,7 +721,6 @@ td {
   .form-desc {
     margin-bottom: 5px;
     padding-top: 10px;
-
   }
 
   /* For Description text area */
@@ -856,7 +735,7 @@ td {
   }
 
   .form-button {
-    background-color: #FF6196;
+    background-color: #ff6196;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -873,7 +752,7 @@ td {
   }
 
   .ad-ev-btn {
-    background-color: #FF6196;
+    background-color: #ff6196;
     padding: 10px 10px 10px 10px;
     border: 0;
     width: 120%;
@@ -923,7 +802,7 @@ td {
 
   .btnnn {
     /* background-color: rgb(119, 7, 106); */
-    background-color: #FF6196;
+    background-color: #ff6196;
     color: white;
     border: 0;
     width: 110%;
@@ -934,7 +813,7 @@ td {
 
   .dlte-btnnn {
     width: 100%;
-    background-color: #FF6196;
+    background-color: #ff6196;
     color: white;
     border: 0;
     height: 27px;
@@ -943,7 +822,7 @@ td {
   }
 
   .events-table th {
-    background-color: #19105B;
+    background-color: #19105b;
     color: white;
     height: 2rem;
   }
@@ -965,27 +844,34 @@ td {
     border-top: dashed 1px black;
     border-bottom: dashed 1px black;
     font-size: 13px;
-    color: #6A6C71;
+    color: #6a6c71;
     font-family: Arial;
     font-weight: 100;
     padding-top: 2%;
   }
 
-  .add-event-name-data, .time, .dates {
+  .add-event-name-data,
+  .time,
+  .dates {
     display: flex;
     justify-content: start;
     width: 100%;
     margin-bottom: 2%;
   }
 
-  .start-date, .end-date, .start-time, .end-time {
+  .start-date,
+  .end-date,
+  .start-time,
+  .end-time {
     margin-left: 0%;
     margin-right: 10%;
     width: 50%;
-
   }
 
-  .start-time input, .end-time input, .start-date input, .end-date input {
+  .start-time input,
+  .end-time input,
+  .start-date input,
+  .end-date input {
     padding: 10px;
     box-sizing: border-box;
     margin-top: 2%;
@@ -1002,9 +888,6 @@ td {
   }
 
   /* ------------------------------------------ManageEvents css ends */
-
-
-
 }
 
 @media screen and (max-width: 600px) {

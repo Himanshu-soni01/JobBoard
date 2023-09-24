@@ -4,9 +4,9 @@
 
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginService from "../../services/LoginService/LoginService" ;
-import logo from "../../assets/images/login_bg.png";
-import image2 from "../../assets/images/image2.png";
+import LoginService from "../services/LoginService" ;
+import logo from "../assets/images/login_bg.png";
+import image2 from "../assets/images/image2.png";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
@@ -111,7 +111,7 @@ const Login = () => {
         <img src={logo} alt="" />
       </div>
       <div className="login-form">
-        <div>
+        <div className="my-image">
           <img src={image2} alt="" />
         </div>
         <form className="login-form-container" onSubmit={loginhandle}>

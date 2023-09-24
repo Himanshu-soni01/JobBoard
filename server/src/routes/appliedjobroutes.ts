@@ -2,7 +2,7 @@ import express from "express";
 
 // const {}
 
-import { getappliedjob } from "../../controller/JobController";
+import { getappliedjob } from "../controller/JobController";
 
 var router = express.Router();
 

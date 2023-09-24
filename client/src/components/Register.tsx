@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import RegisterService from "../../services/RegisterService/RegisterService";
-import logo from "../../assets/images/login_bg.png";
-import image2 from "../../assets/images/image2.png";
-import "../../App.css";
+import RegisterService from "../services/RegisterService";
+import logo from "../assets/images/login_bg.png";
+import image2 from "../assets/images/image2.png";
+import "../App.css";
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -18,6 +18,7 @@ const Register = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const navigate = useNavigate();
+
 
   //   function checkBreakpoint() {
   //     if (window.matchMedia("(max-width: 600px)").matches) {
@@ -44,7 +45,7 @@ const Register = () => {
     }
   };
 
-  const handleEmailChange = (e: { target: { value: any; }; }) => {
+  const handleEmailChange = (e: { target: { value: any } }) => {
     const inputEmail = e.target.value;
     setEmail(inputEmail);
     validateEmail(inputEmail);
@@ -76,7 +77,7 @@ const Register = () => {
     }
   };
 
-  const handleDobChange = (e: { target: { value: any; }; }) => {
+  const handleDobChange = (e: { target: { value: any } }) => {
     const inputDob = e.target.value;
     console.log(inputDob);
     setDob(inputDob);
@@ -84,7 +85,7 @@ const Register = () => {
     checkDateValidity(inputDob);
   };
 
-  const handleSignUp = async (e: { preventDefault: () => void; }) => {
+  const handleSignUp = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (password.length > 6) {
       if (password !== confirmpassword) {
@@ -97,7 +98,7 @@ const Register = () => {
           dob,
           password
         )
-          .then((res: { status: number; }) => {
+          .then((res: { status: number }) => {
             if (res.status === 201) {
               toast.success("Registered success", {
                 position: "top-right",
@@ -146,7 +147,7 @@ const Register = () => {
 
   return (
     <div className="login-container">
-      <div className="login-image-container2" id="my-div">
+      <div className="login-image-container" id="my-div">
         <img src={logo} alt="" />
       </div>
       <div className="login-form2">
@@ -155,71 +156,75 @@ const Register = () => {
         </div>
         <form className="login-form-container2" onSubmit={handleSignUp}>
           <h2>Sign Up</h2>
-          <input
-            type="text"
-            className="input-field"
-            placeholder="Firstname"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            className="input-field"
-            placeholder="Lastname"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-          <input
-            type="email"
-            className={isValidEmail ? "input-field" : "red-border"}
-            placeholder="xyz@jmangroup.com"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
+          <div>
+            <input
+              type="text"
+              className="input-field"
+              placeholder="Firstname"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              className="input-field"
+              placeholder="Lastname"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              className={isValidEmail ? "input-field" : "red-border"}
+              placeholder="xyz@jmangroup.com"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
 
-          <input
-            type="date"
-            className={isOver18 ? "input-field" : "red-border"}
-            placeholder="date of birth"
-            value={dob}
-            onChange={handleDobChange}
-            required
-          />
+            <input
+              type="date"
+              className={isOver18 ? "input-field" : "red-border"}
+              placeholder="date of birth"
+              value={dob}
+              onChange={handleDobChange}
+              required
+            />
+          </div>
           {/* {!isOver18 && <p style={{ color: "red",width:"100px" }}>DOB Invalid </p>} */}
+          <div>
+            <input
+              type="password"
+              className="input-field"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              required
+            />
 
-          <input
-            type="password"
-            className="input-field"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            required
-          />
-
-          <input
-            type="password"
-            className={passwordsMatch ? "input-field" : "red-border"}
-            placeholder=" confirm Password"
-            value={confirmpassword}
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-              setPasswordsMatch(e.target.value === password);
-
-            }}
-            required
-          />
+            <input
+              type="password"
+              className={passwordsMatch ? "input-field" : "red-border"}
+              placeholder=" confirm Password"
+              value={confirmpassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                setPasswordsMatch(e.target.value === password);
+              }}
+              required
+            />
+          </div>
 
           <button type="submit" className="login-btn">
             Sign Up
           </button>
           <br />
-          <p>
-            Already have an account <br /> <Link to="/">Click here</Link>
+          <p style={{paddingLeft:"15%"}}>
+            Already have an account <Link to="/">Click here</Link>
           </p>
         </form>
       </div>
@@ -227,4 +232,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register; 

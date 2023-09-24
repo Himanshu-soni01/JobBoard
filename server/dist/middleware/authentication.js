@@ -15,7 +15,7 @@ const cookieParser = require("cookie-parser");
 dotenv.config();
 const jwt = require("jsonwebtoken");
 const verifyuser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const token = req.header('Authorization');
+    const token = req.header("Authorization");
     console.log(token);
     if (!token) {
         return res.json({ Error: "you are not authenticated" });
