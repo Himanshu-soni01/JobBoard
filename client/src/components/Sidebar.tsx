@@ -14,14 +14,14 @@ const Sidebar = () => {
     setShowSidebar(!showSidebar);
   };
 
-  useEffect(() => {
-    const email = localStorage.getItem("email");
-    loginservice
-      .logindata(email)
-      .then((response: { data: SetStateAction<never[]> }) => {
-        setLogindata(response.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const email = localStorage.getItem("email");
+  //   loginservice
+  //     .logindata(email)
+  //     .then((response: { data: SetStateAction<never[]> }) => {
+  //       setLogindata(response.data);
+  //     });
+  // }, []);
 
   const logout = () => {
     Cookies.set("token", "", { expires: new Date(0) });

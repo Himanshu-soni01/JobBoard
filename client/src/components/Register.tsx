@@ -36,7 +36,6 @@ const Register = () => {
   //   window.addEventListener("resize", checkBreakpoint);
 
   const validateEmail = (inputEmail: string) => {
-    console.log(inputEmail);
     const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
     if (jmanRegex.test(inputEmail) || inputEmail === "") {
       setIsValidEmail(true);
@@ -79,7 +78,6 @@ const Register = () => {
 
   const handleDobChange = (e: { target: { value: any } }) => {
     const inputDob = e.target.value;
-    console.log(inputDob);
     setDob(inputDob);
     // validateDob(inputDob);
     checkDateValidity(inputDob);
@@ -127,6 +125,7 @@ const Register = () => {
           })
           .catch((error: any) => {
             console.error("Fetch error:", error);
+            console.log("FE", error);
 
             toast.error("An error occurred during registration.");
           });
@@ -223,7 +222,7 @@ const Register = () => {
             Sign Up
           </button>
           <br />
-          <p style={{paddingLeft:"15%"}}>
+          <p style={{ paddingLeft: "15%" }}>
             Already have an account <Link to="/">Click here</Link>
           </p>
         </form>

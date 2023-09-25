@@ -3,15 +3,14 @@ const cors = require("cors");
 const http = require("http");
 const dotenv = require("dotenv");
 const mysql2 = require("mysql2");
-// const routes = require('./routes/signin-uproutes')
 
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-const jobroutes = require("./routes/job/jobroutes");
-const signinUproute = require("./routes/signin-up/signin-uproutes");
-const appliedjobroute = require("./routes/appliedJob/appliedjobroutes");
+import jobroutes from "./routes/jobroutes";
+const signinUproute = require("./routes/signin-uproutes");
+const appliedjobroute = require("./routes/appliedjobroutes");
 
 dotenv.config();
 const app = express();
@@ -38,11 +37,11 @@ const port = process.env.PORT;
 //   res.status(404).send("Route is not found.");
 // });
 
-const db = require("./sequelize/models");
-db.sequelize.sync().then(() => {
+const dbs = require("./sequelize/models");
+dbs.sequelize.sync().then(() => {
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
 });
 
-export default app;
+module.exports = app;

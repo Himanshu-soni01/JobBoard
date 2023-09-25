@@ -6,7 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import addjob from "../services/JobService";
 
-const AddJob = ({ onEditEvent, event, onCancel }) => {
+// const AddJob = ({ onEditEvent, event, onCancel }) => {
+const AddJob = () => {
   const [job_title, setJob_title] = useState("");
   const [job_type, setJob_type] = useState("");
   const [cmpy_name, setCmpy_name] = useState("");
@@ -16,20 +17,21 @@ const AddJob = ({ onEditEvent, event, onCancel }) => {
   const handleAddEvent = () => {
     addjob.addJob(job_title, job_type, cmpy_name, job_desc).then(() => {
       // navigate("/events");
-      closeModal();
+      // closeModal();
     });
     toast.success("Event added successfully");
   };
 
-  const closeModal = () => {
-    onCancel();
-  };
+  // const closeModal = () => {
+  //   onCancel();
+  // };
 
   return (
     <div className="modal">
       <div className="modal-content">
         <div className="event-form-container">
-          <button className="close" onClick={closeModal}>
+          {/* <button className="close" onClick={closeModal}> */}
+          <button className="close">
             <span>&times;</span>
           </button>
           <p>Add Event</p>

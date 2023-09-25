@@ -1,40 +1,32 @@
-/* Import Section - Start */
-
-/* React Imports - Start */
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginService from "../services/LoginService" ;
+import LoginService from "../services/LoginService";
 import logo from "../assets/images/login_bg.png";
 import image2 from "../assets/images/image2.png";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
-/* React Imports -End */
-
-/* Import Section - End */
-
-/* Function - Start */
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [isValidEmail, setIsValidEmail] = useState(true);
 
-//   function checkBreakpoint() {
-//     if (window.matchMedia("(max-width: 600px)").matches) {
-//       // console.log(document.getElementById('my-div').classList)
-//       document
-//         .getElementById("my-div")
-//         .classList.remove("login-image-container");
-//       document.getElementById("my-div").classList.add("new");
-//     } else {
-//       document.getElementById("my-div").classList.remove("new");
-//       document.getElementById("my-div").classList.add("login-image-container");
-//     }
-//   }
+  function checkBreakpoint() {
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      console.log(document.getElementById('my-div')?.classList);
+      document
+        .getElementById("my-div")
+        ?.classList.remove("login-image-container");
+      document.getElementById("my-div")?.classList.add("new");
+    } else {
+      document.getElementById("my-div")?.classList.remove("new");
+      document.getElementById("my-div")?.classList.add("login-image-container");
+    }
+  }
 
-//   window.addEventListener("resize", checkBreakpoint);
+  window.addEventListener("resize", checkBreakpoint);
+
   const validateEmail = (inputEmail: string) => {
     console.log(inputEmail);
     const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
@@ -54,13 +46,13 @@ const Login = () => {
   const loginhandle = async (e: { preventDefault: () => void; }) => {
 
     e.preventDefault();
-   
+
     LoginService.userLogin(email, password)
       .then((response: { statusText: string; data: { token: any; }; status: number; }) => {
         if (response.statusText === "OK") {
           console.log(response.data.token);
-          document.cookie =`token=${response.data.token}`;
-          localStorage.setItem("email",email);
+          document.cookie = `token=${response.data.token}`;
+          localStorage.setItem("email", email);
           toast.success("Login success", {
             position: "top-right",
             autoClose: 1000,
@@ -71,6 +63,7 @@ const Login = () => {
             progress: undefined,
             theme: "light",
           });
+          console.log("Navigating");
 
           navigate("/dashboard");
         }
@@ -102,8 +95,6 @@ const Login = () => {
         });
       });
   };
-
-  /* Render View Return - Start */
 
   return (
     <div className="login-container">
@@ -144,8 +135,6 @@ const Login = () => {
     </div>
   );
 
-  /* Render View Return - End */
 };
-/* Function - End */
+
 export default Login;
-/* Export default functionName */

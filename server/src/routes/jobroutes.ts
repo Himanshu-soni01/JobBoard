@@ -8,4 +8,4 @@ router.get("/",verifyuser, create);
 
 router.get("/getjob/:email", getappliedjob);
 
-export default router;
+export default {create, getappliedjob};
