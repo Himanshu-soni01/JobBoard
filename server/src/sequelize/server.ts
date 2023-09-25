@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const http = require('http');
+const http = require("http");
 const dotenv = require("dotenv");
 const mysql2 = require("mysql2");
 // const routes = require('./routes/signin-uproutes')
@@ -9,9 +9,9 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-const job = require("./routes/job/jobroutes");
-const signinUp = require("./routes/signin-up/signin-uproutes");
-const appliedjob = require("./routes/appliedJob/appliedjobroutes");
+const jobroutes = require("./routes/job/jobroutes");
+const signinUproute = require("./routes/signin-up/signin-uproutes");
+const appliedjobroute = require("./routes/appliedJob/appliedjobroutes");
 
 dotenv.config();
 const app = express();
@@ -28,9 +28,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("/signinUp", signinUp);
-app.use("/job", job);
-app.use("/appliedjob", appliedjob);
+app.use("/signinUp", signinUproute);
+app.use("/job", jobroutes);
+app.use("/appliedjob", appliedjobroute);
 
 const port = process.env.PORT;
 
