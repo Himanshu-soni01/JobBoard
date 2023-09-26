@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./../../App.css";
+import "./../App.css";
 import { useNavigate } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";

@@ -35,7 +35,7 @@ User.init(
       allowNull: false,
     },
     isAdmin: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: false,
     },

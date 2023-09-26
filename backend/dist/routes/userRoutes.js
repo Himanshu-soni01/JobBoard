@@ -8,3 +8,4 @@ exports.router = router;
 const userController = new UserController_1.UserController();
 router.post("/api/user/register", userController.signup);
 router.post("/api/user/login", userController.login);
+router.post(`/api/user/getuserdata/:email`, userController.getUserData);

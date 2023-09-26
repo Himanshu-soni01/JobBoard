@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./../../App.css";
+import "./../App.css";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
-const EditJob = ({}) => {
+const EditJob = ({ }) => {
   const [job_title, setJob_title] = useState("props[0].title");
   const [job_type, setJob_type] = useState("props[0].event_type");
   const [cmpy_name, setCmpy_name] = useState("props[0].start_date");
@@ -44,7 +44,7 @@ const EditJob = ({}) => {
         <div className="event-form-container">
           <button
             className="close"
-            //   onClick={closeModal}
+          //   onClick={closeModal}
           >
             <span>&times;</span>
           </button>
@@ -98,8 +98,8 @@ const EditJob = ({}) => {
             </div>
             <button
               className="form-button"
-              // onClick={event ? handleEditEvent : handleAddEvent}
-              //   onClick={handleAddEvent}
+            // onClick={event ? handleEditEvent : handleAddEvent}
+            //   onClick={handleAddEvent}
             >
               {/* {event ? "Update Event" : "Add Event"} */}
               Modify

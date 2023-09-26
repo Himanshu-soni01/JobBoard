@@ -32,7 +32,7 @@ AppliedJob.init(
       unique: true,
     },
     location: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     salary: {
@@ -46,8 +46,8 @@ AppliedJob.init(
   },
   {
     sequelize,
-    modelName: "User",
-    tableName: "users",
+    modelName: "AppliedJob",
+    tableName: "AppliedJob",
   }
 );
 

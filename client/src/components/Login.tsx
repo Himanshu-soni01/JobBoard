@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginService from "../services/LoginService";
+import LoginService from "../services/UserService";
 import logo from "../assets/images/login_bg.png";
 import image2 from "../assets/images/image2.png";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,20 +12,20 @@ const Login = () => {
   const navigate = useNavigate();
   const [isValidEmail, setIsValidEmail] = useState(true);
 
-  function checkBreakpoint() {
-    if (window.matchMedia("(max-width: 600px)").matches) {
-      console.log(document.getElementById('my-div')?.classList);
-      document
-        .getElementById("my-div")
-        ?.classList.remove("login-image-container");
-      document.getElementById("my-div")?.classList.add("new");
-    } else {
-      document.getElementById("my-div")?.classList.remove("new");
-      document.getElementById("my-div")?.classList.add("login-image-container");
-    }
-  }
+  // function checkBreakpoint() {
+  //   if (window.matchMedia("(max-width: 600px)").matches) {
+  //     console.log(document.getElementById('my-div')?.classList);
+  //     document
+  //       .getElementById("my-div")
+  //       ?.classList.remove("login-image-container");
+  //     document.getElementById("my-div")?.classList.add("new");
+  //   } else {
+  //     document.getElementById("my-div")?.classList.remove("new");
+  //     document.getElementById("my-div")?.classList.add("login-image-container");
+  //   }
+  // }
 
-  window.addEventListener("resize", checkBreakpoint);
+  // window.addEventListener("resize", checkBreakpoint);
 
   const validateEmail = (inputEmail: string) => {
     console.log(inputEmail);
@@ -49,9 +49,9 @@ const Login = () => {
 
     LoginService.userLogin(email, password)
       .then((response: { statusText: string; data: { token: any; }; status: number; }) => {
-        if (response.statusText === "OK") {
+        if (response.status == 200) {
           console.log(response.data.token);
-          document.cookie = `token=${response.data.token}`;
+          // document.cookie = `token=${response.data.token}`;
           localStorage.setItem("email", email);
           toast.success("Login success", {
             position: "top-right",
@@ -63,8 +63,6 @@ const Login = () => {
             progress: undefined,
             theme: "light",
           });
-          console.log("Navigating");
-
           navigate("/dashboard");
         }
         if (response.status === 201) {

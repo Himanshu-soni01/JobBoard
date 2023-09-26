@@ -3,25 +3,31 @@ import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import logo from "../assets/images/jmanLogo.png";
 import Cookies from "js-cookie";
-import loginservice from "../services/LoginService";
+import loginservice from "../services/UserService";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [logindata, setLogindata] = useState([]);
+  // const [logindata, setLogindata] = useState({});
+  const [logindata, setLogindata] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
 
-  // useEffect(() => {
-  //   const email = localStorage.getItem("email");
-  //   loginservice
-  //     .logindata(email)
-  //     .then((response: { data: SetStateAction<never[]> }) => {
-  //       setLogindata(response.data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    async function get_data() {
+      await loginservice
+        .getuserlogindata(email)
+        .then((response) => {
+          setLogindata(response.data.name);
+          setIsAdmin(response.data.data)
+        });
+    }
+    get_data()
+  }, []);
 
   const logout = () => {
     Cookies.set("token", "", { expires: new Date(0) });
@@ -31,6 +37,7 @@ const Sidebar = () => {
 
   return (
     <div>
+
       <div className={`sidebar ${showSidebar ? "active" : ""}`}>
         <div className="menu-button" onClick={toggleSidebar}>
           {showSidebar ? (
@@ -75,6 +82,7 @@ const Sidebar = () => {
                 Applied Jobs
               </Link>
             </li>
+
             <li>
               <Link
                 style={{ color: "white", textDecoration: "none" }}
@@ -83,20 +91,20 @@ const Sidebar = () => {
                 Job Board
               </Link>
             </li>
-            {/* {userdata && userdata.userType === "admin" ? ( */}
-            {/* {logindata.isAdmin ? (
+
+
+            {isAdmin ? (
               <li>
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
-                  to="/dashboard/manageevents"
+                  to="/dashboard/managejob"
                 >
-                  Manage Event
+                  Manage Job
                 </Link>
               </li>
             ) : (
               ""
-            )} */}
-            {/* ) : null} */}
+            )}
           </ul>
           <div className="sidebar-logout">
             {/* {logindata.first_name} */}

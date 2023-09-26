@@ -3,14 +3,7 @@ import axios from "axios";
 let base_url = process.env.REACT_APP_API_URL;
 
 async function fetchJobData(email: any) {
-  let response = await axios.get(`${base_url}/api/job`);
-
-  return response;
-}
-
-async function fetchAppliedJobData(email: any) {
-  let response = await axios.get(`${base_url}/api/job/appliedjob/${email}`);
-
+  let response = await axios.get(`${base_url}/api/job/getalljob`);
   return response;
 }
 
@@ -32,4 +25,14 @@ async function addJob(
   return response;
 }
 
-export default { fetchJobData, fetchAppliedJobData, addJob };
+async function fetchAppliedJobData(email: any) {
+  let response = await axios.get(`${base_url}/api/job/getappliedjob/${email}`);
+  return response;
+}
+
+async function adminCreatedJob(email: any) {
+  let response = await axios.get(`${base_url}/api/job/getadminjobs/${email}`);
+  return response;
+}
+
+export default { fetchJobData, fetchAppliedJobData, addJob, adminCreatedJob };

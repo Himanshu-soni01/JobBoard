@@ -46,8 +46,8 @@ Job.init(
   },
   {
     sequelize,
-    modelName: "User",
-    tableName: "users",
+    modelName: "Job",
+    tableName: "Job",
   }
 );
 

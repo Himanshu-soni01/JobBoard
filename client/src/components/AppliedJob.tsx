@@ -12,7 +12,7 @@ import "../App.css";
 import appliedjobservice from "../services/JobService";
 
 const AppliedJob = () => {
-  const [projectData, setProjectData] = useState([]);
+  const [jobData, setProjectData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortItem, setSortItem] = useState({ key: "", direction: "" });
 
@@ -28,7 +28,7 @@ const AppliedJob = () => {
     setSortItem({ key, direction });
   };
 
-  const sortedData = projectData
+  const sortedData = jobData
     .filter((item) =>
       Object.values(item)
         .some.toString()
@@ -50,11 +50,11 @@ const AppliedJob = () => {
 
   const projectDetails = () => {
     const email = localStorage.getItem("email");
-    appliedjobservice
-      .fetchAppliedJobData(email)
-      .then((res: { data: SetStateAction<never[]> }) => {
-        setProjectData(res.data);
-      });
+    // appliedjobservice
+    //   .fetchAppliedJobData(email)
+    //   .then((res: { data: SetStateAction<never[]> }) => {
+    //     setProjectData(res.data);
+    //   });
   };
 
   useEffect(() => {
@@ -88,9 +88,9 @@ const AppliedJob = () => {
               ))}
           </th>
 
-          <th onClick={() => requestSort("job_type")}>
-            Type
-            {sortItem.key === "job_type" &&
+          <th onClick={() => requestSort("job_cmpy_name")}>
+            Company Name
+            {sortItem.key === "job_cmpy_name" &&
               (sortItem.direction === "ascending" ? (
                 <span>&uarr;</span>
               ) : (
@@ -98,9 +98,9 @@ const AppliedJob = () => {
               ))}
           </th>
 
-          <th onClick={() => requestSort("job_cmpy_name")}>
-            Company Name
-            {sortItem.key === "job_cmpy_name" &&
+          <th onClick={() => requestSort("job_location")}>
+            Location
+            {sortItem.key === "job_location" &&
               (sortItem.direction === "ascending" ? (
                 <span>&uarr;</span>
               ) : (
@@ -120,49 +120,12 @@ const AppliedJob = () => {
           <th>Status</th>
         </tr>
         {sortedData.map(
-          (item: {
-            job_id: Key | null | undefined;
-            job_title:
-              | string
-              | number
-              | boolean
-              | ReactElement<any, string | JSXElementConstructor<any>>
-              | Iterable<ReactNode>
-              | ReactPortal
-              | null
-              | undefined;
-            job_type:
-              | string
-              | number
-              | boolean
-              | ReactElement<any, string | JSXElementConstructor<any>>
-              | Iterable<ReactNode>
-              | ReactPortal
-              | null
-              | undefined;
-            job_cmpy_name:
-              | string
-              | number
-              | boolean
-              | ReactElement<any, string | JSXElementConstructor<any>>
-              | Iterable<ReactNode>
-              | ReactPortal
-              | null
-              | undefined;
-            job_desc:
-              | string
-              | number
-              | boolean
-              | ReactElement<any, string | JSXElementConstructor<any>>
-              | Iterable<ReactNode>
-              | ReactPortal
-              | null
-              | undefined;
-          }) => (
+          (item: any) => (
             <tr key={item.job_id}>
               <td>{item.job_title}</td>
-              <td>{item.job_type}</td>
               <td>{item.job_cmpy_name}</td>
+              <td>{item.job_location}</td>
+              <td>{item.job_salary}</td>
               <td>{item.job_desc}</td>
             </tr>
           )

@@ -1,13 +1,5 @@
-/* Import Section - Start */
-
-/* React Imports - Start */
-
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-/* React Imports -End */
-
-/* Project components Imports - Start */
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,14 +8,10 @@ import Register from "./components/Register";
 import Layout from "./components/Layout";
 import AppliedJob from "./components/AppliedJob";
 import JobBoard from "./components/JobBoard";
+import ManageJob from "./components/ManageJob";
 
-/* Project components Imports -End */
 
-/* Import Section - End */
-
-/* Function - Start */
 function App() {
-  /* Render View Return - Start */
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,18 +21,13 @@ function App() {
           <Route path="/dashboard" element={<Layout />}>
             <Route path="/dashboard" element={<AppliedJob />} />
             <Route path="/dashboard/jobboard" element={<JobBoard />} />
+            <Route path="/dashboard/managejob" element={<ManageJob />} />
           </Route>
         </Routes>
       </BrowserRouter>
       <ToastContainer />
     </div>
   );
-
-  /* Render View Return - End */
 }
-
-/* Function - End */
-
-/* Export default functionName */
 
 export default App;

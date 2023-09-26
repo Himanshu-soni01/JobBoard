@@ -33,10 +33,6 @@ Job.init({
         type: sequelize_1.DataTypes.INTEGER,
         allowNull: true,
     },
-    postedAt: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: true,
-    },
     postedBy: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: true,

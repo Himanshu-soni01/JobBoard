@@ -94,7 +94,7 @@ const JobBoard = () => {
   return (
     <>
       <div className="manageEvent-page">
-        <h1>Manage Event</h1>
+        <h1>Job board</h1>
         <div className="add-event-btn">
           <button className="ad-ev-btn" onClick={openModal}>
             + Add Job

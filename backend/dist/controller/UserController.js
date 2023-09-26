@@ -7,10 +7,36 @@ exports.UserController = void 0;
 const user_1 = require("../model/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 class UserController {
+    // public validateEmail(email: any) {
+    //   const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
+    //   return jmanRegex.test(email);
+    // }
+    // private validatePassword(password: string) {
+    //   const passwordRegex =
+    //     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&!])[A-Za-z\d@#$%^&!]{8,}$/;
+    //   let rawPassword = password;
+    //   return passwordRegex.test(rawPassword) || rawPassword.length > 7;
+    // }
+    async getUserData(req, res) {
+        try {
+            console.log("Getting user data in backend");
+            var { email } = req.body;
+            var get_user_details = await user_1.User.findOne({
+                where: {
+                    email: email,
+                },
+            });
+            res.send(get_user_details);
+        }
+        catch (error) {
+            throw error;
+        }
+    }
     async signup(req, res) {
         try {
             const { email } = req.body;
             const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
+            // if (this.validateEmail(email)) {
             if (jmanRegex.test(email)) {
                 const user = await user_1.User.findOne({ where: { email: email } });
                 if (!user) {
@@ -21,8 +47,8 @@ class UserController {
                         dob: req.body.dob,
                         password: await bcrypt_1.default.hash(req.body.password, 10),
                     };
-                    const created_user = await user_1.User.create(usr);
-                    res.status(201).json(created_user);
+                    await user_1.User.create(usr);
+                    res.status(201).json("User Registered Successfully");
                 }
                 else {
                     res.status(200).send("User already exists");

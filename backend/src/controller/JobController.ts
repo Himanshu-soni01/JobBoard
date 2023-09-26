@@ -32,6 +32,15 @@ class JobController {
       res.status(500).json({ error: "Internal server error" });
     }
   }
+
+  public async fetchAllJob(req: Request, res: Response) {
+    try {
+      var get_all_jobs = await Job.findAll();
+      res.status(200).json({ data: get_all_jobs });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { JobController };

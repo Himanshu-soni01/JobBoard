@@ -2,6 +2,19 @@ import axios from "axios";
 
 let base_url = process.env.REACT_APP_API_URL;
 
+async function userLogin(email: any, password: any) {
+  let response = await axios.post(`${base_url}/api/user/login`, {
+    email: email,
+    password: password,
+  });
+  return response;
+}
+
+async function getuserlogindata(email: any) {
+  let response = await axios.get(`${base_url}/api/user/getuserdata/${email}`);
+  return response;
+}
+
 async function userRegistration(
   first_name: any,
   last_name: any,
@@ -29,7 +42,7 @@ async function userRegistration(
   //   console.error('Error during user registration:', error);
   //   return { success: false, message: 'An error occurred during registration.' };
   // }
-  return response.data;
+  return response;
 }
 
-export default { userRegistration };
+export default { userLogin, getuserlogindata, userRegistration };

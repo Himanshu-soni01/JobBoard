@@ -4,25 +4,41 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 class UserController {
-  // private validateEmail(email: string) {
+  // public validateEmail(email: any) {
   //   const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
-  //   let rawEmail = email;
-  //   return jmanRegex.test(rawEmail);
+  //   return jmanRegex.test(email);
   // }
 
   // private validatePassword(password: string) {
   //   const passwordRegex =
   //     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&!])[A-Za-z\d@#$%^&!]{8,}$/;
   //   let rawPassword = password;
-  //   return (passwordRegex.test(rawPassword) || rawPassword.length > 7);
+  //   return passwordRegex.test(rawPassword) || rawPassword.length > 7;
   // }
+
+  public async getUserData(req: Request, res: Response) {
+    try {
+      var { email } = req.params;
+      var get_user_details = await User.findOne({
+        where: {
+          email: email,
+        },
+      });
+      res.json({
+        data: get_user_details?.dataValues.isAdmin,
+        name: get_user_details?.dataValues.first_name,
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 
   public async signup(req: Request, res: Response): Promise<void> {
     try {
       const { email } = req.body;
       const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
+      // if (this.validateEmail(email)) {
       if (jmanRegex.test(email)) {
-        // if (this.validateEmail(email)) {
         const user = await User.findOne({ where: { email: email } });
         if (!user) {
           var usr = {
@@ -32,8 +48,8 @@ class UserController {
             dob: req.body.dob,
             password: await bcrypt.hash(req.body.password, 10),
           };
-          const created_user = await User.create(usr);
-          res.status(201).json(created_user);
+          await User.create(usr);
+          res.status(201).json("User Registered Successfully");
         } else {
           res.status(200).send("User already exists");
         }
