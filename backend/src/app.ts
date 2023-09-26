@@ -1,3 +1,25 @@
+import express from "express";
+import { json } from "body-parser";
+import { router as userroutes } from "./routes/userRoutes";
+import { router as jobroutes } from "./routes/jobRoutes";
+import dotenv from "dotenv";
+
+const cors = require("cors");
+
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(userroutes);
+app.use(jobroutes);
+
+export { app };
+
+
+
+
 // import express, {
 //   Request,
 //   Response,
@@ -36,20 +58,3 @@
 // const server: Server = app.listen(PORT, () =>
 //   console.log(`Server is runnung on ${PORT}`)
 // );
-
-import express from "express";
-import { json } from "body-parser";
-import { router } from "./routes/userRoutes";
-import dotenv from "dotenv";
-
-const cors = require("cors");
-
-dotenv.config();
-
-const app = express();
-
-app.use(express.json());
-app.use(cors());
-app.use(router);
-
-export { app };

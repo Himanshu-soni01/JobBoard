@@ -8,7 +8,6 @@ class Job extends Model {
   public company!: string;
   public location!: string;
   public salary!: number;
-  public postedAt!: Date;
   public postedBy!: string;
 }
 
@@ -38,10 +37,6 @@ Job.init(
     },
     salary: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    postedAt: {
-      type: DataTypes.DATE,
       allowNull: true,
     },
     postedBy: {

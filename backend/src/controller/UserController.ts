@@ -4,11 +4,25 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 class UserController {
+  // private validateEmail(email: string) {
+  //   const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
+  //   let rawEmail = email;
+  //   return jmanRegex.test(rawEmail);
+  // }
+
+  // private validatePassword(password: string) {
+  //   const passwordRegex =
+  //     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&!])[A-Za-z\d@#$%^&!]{8,}$/;
+  //   let rawPassword = password;
+  //   return (passwordRegex.test(rawPassword) || rawPassword.length > 7);
+  // }
+
   public async signup(req: Request, res: Response): Promise<void> {
     try {
       const { email } = req.body;
       const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
       if (jmanRegex.test(email)) {
+        // if (this.validateEmail(email)) {
         const user = await User.findOne({ where: { email: email } });
         if (!user) {
           var usr = {

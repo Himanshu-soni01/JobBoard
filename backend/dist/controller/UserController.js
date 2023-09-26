@@ -57,7 +57,7 @@ class UserController {
                 // res.cookie("token", token);
                 // console.log(token);
                 // res.status(200).json({ token: token });
-                res.status(200);
+                res.status(200).json({ message: "Login Success" });
                 console.log("Respones Send");
             }
             else {

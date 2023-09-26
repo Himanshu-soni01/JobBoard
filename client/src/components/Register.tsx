@@ -19,21 +19,20 @@ const Register = () => {
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const navigate = useNavigate();
 
+  function checkBreakpoint() {
+    const myDiv = document.getElementById("my-div");
+    if (myDiv) {
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        myDiv.classList.remove("login-image-container2");
+        myDiv.classList.add("new");
+      } else {
+        myDiv.classList.remove("new");
+        myDiv.classList.add("login-image-container2");
+      }
+    }
+  }
 
-  //   function checkBreakpoint() {
-  //     if (window.matchMedia("(max-width: 600px)").matches) {
-  //       // console.log(document.getElementById('my-div').classList)
-  //       document
-  //         .getElementById("my-div")
-  //         .classList.remove("login-image-container2");
-  //       document.getElementById("my-div").classList.add("new");
-  //     } else {
-  //       document.getElementById("my-div").classList.remove("new");
-  //       document.getElementById("my-div").classList.add("login-image-container2");
-  //     }
-  //   }
-
-  //   window.addEventListener("resize", checkBreakpoint);
+  window.addEventListener("resize", checkBreakpoint);
 
   const validateEmail = (inputEmail: string) => {
     const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
@@ -65,7 +64,6 @@ const Register = () => {
         currentDate.getDate()
       );
 
-      //   if (inputDateObj < eighteenYearsAgo || inputDateObj === "") {
       if (inputDateObj < eighteenYearsAgo || inputDateObj === null) {
         setIsOver18(true);
       } else {
@@ -79,56 +77,72 @@ const Register = () => {
   const handleDobChange = (e: { target: { value: any } }) => {
     const inputDob = e.target.value;
     setDob(inputDob);
-    // validateDob(inputDob);
     checkDateValidity(inputDob);
   };
 
   const handleSignUp = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (password.length > 6) {
-      if (password !== confirmpassword) {
-        setPasswordsMatch(false);
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&!])[A-Za-z\d@#$%^&!]{8,}$/;
+    if (password.length > 7) {
+      if (passwordRegex.test(password)) {
+        if (password !== confirmpassword) {
+          setPasswordsMatch(false);
+        } else {
+          RegisterService.userRegistration(
+            firstname,
+            lastname,
+            email,
+            dob,
+            password
+          )
+            .then((res) => {
+              if (res.status === 201) {
+                toast.success("Registered success", {
+                  position: "top-right",
+                  autoClose: 1000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
+
+                navigate("/");
+              } else if (res.status === 200) {
+                toast.warning("Email is already existed..", {
+                  position: "top-right",
+                  autoClose: 1000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
+              }
+            })
+            .catch((error) => {
+              console.error("Fetch error:", error);
+
+              toast.error("An error occurred during registration.");
+            });
+        }
       } else {
-        RegisterService.userRegistration(
-          firstname,
-          lastname,
-          email,
-          dob,
-          password
-        )
-          .then((res: { status: number }) => {
-            if (res.status === 201) {
-              toast.success("Registered success", {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-              });
-
-              navigate("/");
-            } else if (res.status === 200) {
-              toast.warning("Email is already existed..", {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-              });
-            }
-          })
-          .catch((error: any) => {
-            console.error("Fetch error:", error);
-            console.log("FE", error);
-
-            toast.error("An error occurred during registration.");
-          });
+        toast.warning(
+          "Password must contain Capital, Small, Special Character and Number",
+          {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
       }
     } else {
       toast.warning("Email should be greater than 6 characters", {
@@ -231,4 +245,4 @@ const Register = () => {
   );
 };
 
-export default Register; 
+export default Register;
