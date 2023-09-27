@@ -230,6 +230,10 @@ const ManageJob = () => {
         setSortItem({ key, direction });
     };
 
+    const handleDeleteJob = (job_id: any) => {
+        jobService.deleteJob(job_id);
+    };
+
     const filteredAndSortedData = createdJobs
         .filter((item) =>
             Object.values(item)
@@ -329,7 +333,8 @@ const ManageJob = () => {
                                     <td>{item.description}</td>
                                     <td>{item.salary}</td>
                                     <td className="edit-btn">
-                                        <button className="dlte-btnnn">
+                                        <button className="dlte-btnnn"
+                                            onClick={() => handleDeleteJob(item.id)}>
                                             <FaTrash />
                                         </button>
                                     </td>

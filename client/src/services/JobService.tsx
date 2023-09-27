@@ -44,4 +44,10 @@ async function adminCreatedJob(email: any) {
   return response.data;
 }
 
-export default { fetchJobData, fetchAppliedJobData, addJob, adminCreatedJob, userAppliedJob };
+async function deleteJob(job_id: any) {
+  let response = await axios.get(`${base_url}/api/job/deletejob/${job_id}`);
+  return response;
+}
+
+
+export default { fetchJobData, fetchAppliedJobData, addJob, adminCreatedJob, userAppliedJob, deleteJob };
