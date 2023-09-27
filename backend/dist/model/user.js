@@ -29,7 +29,7 @@ User.init({
         allowNull: false,
     },
     isAdmin: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: true,
         defaultValue: false,
     },

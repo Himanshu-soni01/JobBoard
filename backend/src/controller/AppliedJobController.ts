@@ -34,7 +34,7 @@ class AppliedjobController {
 
   public async getAppliedJob(req: Request, res: Response) {
     try {
-      var { email } = req.body;
+      var { email } = req.params;
       var get_applied_job = await AppliedJob.findAll({
         where: {
           appliedBy: email,
@@ -48,12 +48,14 @@ class AppliedjobController {
 
   public async getAdminJob(req: Request, res: Response) {
     try {
-      var { email } = req.body;
+      var { email } = req.params;
+
       var get_admin_jobs = await Job.findAll({
         where: {
           postedBy: email,
         },
       });
+
       res.status(201).json({ data: get_admin_jobs });
     } catch (error) {
       throw error;

@@ -19,14 +19,16 @@ class UserController {
     // }
     async getUserData(req, res) {
         try {
-            console.log("Getting user data in backend");
-            var { email } = req.body;
+            var { email } = req.params;
             var get_user_details = await user_1.User.findOne({
                 where: {
                     email: email,
                 },
             });
-            res.send(get_user_details);
+            res.json({
+                data: get_user_details?.dataValues.isAdmin,
+                name: get_user_details?.dataValues.first_name,
+            });
         }
         catch (error) {
             throw error;

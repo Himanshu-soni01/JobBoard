@@ -2,24 +2,33 @@ import axios from "axios";
 
 let base_url = process.env.REACT_APP_API_URL;
 
-async function fetchJobData(email: any) {
+async function fetchJobData() {
   let response = await axios.get(`${base_url}/api/job/getalljob`);
+  return response.data;
+}
+
+async function userAppliedJob(job_id: any, email: any) {
+  let response = await axios.post(`${base_url}/api/job/userappliedjob/${job_id}`, { email });
   return response;
 }
 
 async function addJob(
-  job_title: any,
-  cmpy_name: any,
-  cmpy_location: any,
-  job_salary: any,
-  job_desc: any
+  title: any,
+  company: any,
+  location: any,
+  description: any,
+  salary: any,
+  email: any
 ) {
+  console.log("Sending REQUEST");
+
   let response = await axios.post(`${base_url}/api/job/addjob`, {
-    job_title,
-    cmpy_name,
-    cmpy_location,
-    job_salary,
-    job_desc,
+    title,
+    company,
+    location,
+    salary,
+    description,
+    email
   });
 
   return response;
@@ -27,12 +36,12 @@ async function addJob(
 
 async function fetchAppliedJobData(email: any) {
   let response = await axios.get(`${base_url}/api/job/getappliedjob/${email}`);
-  return response;
+  return response.data;
 }
 
 async function adminCreatedJob(email: any) {
   let response = await axios.get(`${base_url}/api/job/getadminjobs/${email}`);
-  return response;
+  return response.data;
 }
 
-export default { fetchJobData, fetchAppliedJobData, addJob, adminCreatedJob };
+export default { fetchJobData, fetchAppliedJobData, addJob, adminCreatedJob, userAppliedJob };

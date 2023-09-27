@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Layout from "./components/Layout";
-import AppliedJob from "./components/AppliedJob";
-import JobBoard from "./components/JobBoard";
-import ManageJob from "./components/ManageJob";
+import Login from "./components/User/Login";
+import Register from "./components/User/Register";
+import Layout from "./components/Layout/Layout";
+import AppliedJob from "./components/Job/AppliedJob";
+import JobBoard from "./components/Job/JobBoard";
+import ManageJob from "./components/Job/ManageJob";
 
 
 function App() {

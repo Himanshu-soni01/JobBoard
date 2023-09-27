@@ -29,10 +29,9 @@ Job.init(
     company: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     location: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     salary: {
@@ -41,7 +40,7 @@ Job.init(
     },
     postedBy: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
   },
   {

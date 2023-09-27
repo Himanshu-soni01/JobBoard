@@ -23,10 +23,9 @@ Job.init({
     company: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
     location: {
-        type: sequelize_1.DataTypes.DATEONLY,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
     salary: {
@@ -35,10 +34,10 @@ Job.init({
     },
     postedBy: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
 }, {
     sequelize: database_1.sequelize,
-    modelName: "User",
-    tableName: "users",
+    modelName: "Job",
+    tableName: "Job",
 });

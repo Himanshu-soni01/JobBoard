@@ -26,7 +26,7 @@ AppliedJob.init({
         unique: true,
     },
     location: {
-        type: sequelize_1.DataTypes.DATEONLY,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
     salary: {
@@ -39,6 +39,6 @@ AppliedJob.init({
     },
 }, {
     sequelize: database_1.sequelize,
-    modelName: "User",
-    tableName: "users",
+    modelName: "AppliedJob",
+    tableName: "AppliedJob",
 });
