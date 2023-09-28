@@ -25,7 +25,7 @@ class UserController {
         },
       });
       res.json({
-        data: get_user_details?.dataValues.isAdmin,
+        admin: get_user_details?.dataValues.isAdmin,
         name: get_user_details?.dataValues.first_name,
       });
     } catch (error) {

@@ -11,5 +11,6 @@ router.post(`/api/job/userappliedjob/:job_id`, jobController.userAppliedJob);
 router.post("/api/job/addjob", jobController.jobPost);
 router.get(`/api/job/getappliedjob/:email`, appliedjobController.getAppliedJob);
 router.get(`/api/job/getadminjobs/:email`, appliedjobController.getAdminJob);
+router.delete(`/api/job/deletejob/:jobid`, jobController.deleteJob);
 
 export { router };

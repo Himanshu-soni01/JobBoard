@@ -46,7 +46,11 @@ class JobController {
 
   public async userAppliedJob(req: Request, res: Response) {
     try {
+      console.log("HERE HERE");
+
       var jobId = req.params;
+      console.log(jobId);
+
       var user_email = req.body.email;
       var get_job_data = await Job.findOne({
         where: {
@@ -54,7 +58,7 @@ class JobController {
         },
       });
       var job_data = {
-        id: get_job_data!.dataValues.id,
+        job_id: get_job_data!.dataValues.id,
         title: get_job_data!.dataValues.title,
         company: get_job_data!.dataValues.company,
         location: get_job_data!.dataValues.location,
@@ -65,7 +69,8 @@ class JobController {
 
       var check_applied_data = await AppliedJob.findOne({
         where: {
-          id: jobId.job_id,
+          job_id: jobId.job_id,
+          appliedBy: user_email,
         },
       });
       console.log("cap", check_applied_data);
@@ -78,6 +83,20 @@ class JobController {
       }
     } catch (error) {
       throw error;
+    }
+  }
+
+  public async deleteJob(req: Request, res: Response) {
+    try {
+      var jobId = await req.params;
+      console.log("BE req", jobId.jobid);
+
+      await Job.destroy({
+        where: { id: jobId.jobid },
+      });
+      res.status(200).json({ message: "Job deleted successfully" });
+    } catch (error) {
+      console.log(error);
     }
   }
 }

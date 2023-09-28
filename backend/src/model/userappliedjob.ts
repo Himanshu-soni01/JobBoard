@@ -1,8 +1,10 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database";
+import { AutoIncrement } from "sequelize-typescript";
 
 class AppliedJob extends Model {
   public id!: number;
+  public job_id!: number;
   public title!: string;
   public description!: string;
   public company!: string;
@@ -18,6 +20,10 @@ AppliedJob.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    job_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -29,7 +35,6 @@ AppliedJob.init(
     company: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     location: {
       type: DataTypes.STRING,

@@ -182,6 +182,7 @@ import "./../../App.css";
 import { FaTrash } from "react-icons/fa";
 import Addjob from "./AddJob";
 import jobService from "../../services/JobService";
+import { toast } from "react-toastify";
 
 const ManageJob = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -231,8 +232,22 @@ const ManageJob = () => {
     };
 
     const handleDeleteJob = (job_id: any) => {
-        jobService.deleteJob(job_id);
-    };
+        jobService.deleteJob(job_id).then((response) => {
+            if (response.status == 200) {
+                toast.success(response.data.message, {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+
+            };
+        })
+    }
 
     const filteredAndSortedData = createdJobs
         .filter((item) =>

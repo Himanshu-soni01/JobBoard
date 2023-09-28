@@ -43,7 +43,7 @@ const AddJob: React.FC<AddJobProps> = ({ onCancel }) => {
           </button>
           <p>Job Details</p>
 
-          <div className="add-event-input-area">
+          <div className="add-job-input-area">
             <div className="add-event-name-data">
               <div className="form-name">
                 <label>Job Title:</label>
@@ -95,15 +95,13 @@ const AddJob: React.FC<AddJobProps> = ({ onCancel }) => {
               </div>
             </div>
           </div>
+          <button
+            className="form-button"
+            onClick={handlePostJob}
+          >
+            Post
+          </button>
         </div>
-        <button
-          className="form-button"
-          // onClick={event ? handleEditEvent : handleAddEvent}
-          onClick={handlePostJob}
-        >
-          {/* {event ? "Update Event" : "Add Event"} */}
-          Add
-        </button>
       </div>
     </div>
   );

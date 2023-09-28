@@ -10,8 +10,8 @@ import AppliedJob from "./components/Job/AppliedJob";
 import JobBoard from "./components/Job/JobBoard";
 import ManageJob from "./components/Job/ManageJob";
 
-
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -19,8 +19,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/dashboard" element={<Layout />}>
-            <Route path="/dashboard" element={<AppliedJob />} />
-            <Route path="/dashboard/jobboard" element={<JobBoard />} />
+            <Route path="/dashboard" element={<JobBoard />} />
+            <Route path="/dashboard/appliedjob" element={<AppliedJob />} />
             <Route path="/dashboard/managejob" element={<ManageJob />} />
           </Route>
         </Routes>

@@ -9,8 +9,7 @@ exports.AppliedJob = AppliedJob;
 AppliedJob.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        primaryKey: false,
     },
     title: {
         type: sequelize_1.DataTypes.STRING,
@@ -23,7 +22,6 @@ AppliedJob.init({
     company: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
     location: {
         type: sequelize_1.DataTypes.STRING,

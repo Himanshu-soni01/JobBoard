@@ -8,6 +8,8 @@ async function fetchJobData() {
 }
 
 async function userAppliedJob(job_id: any, email: any) {
+  console.log("Sending Req");
+
   let response = await axios.post(`${base_url}/api/job/userappliedjob/${job_id}`, { email });
   return response;
 }
@@ -45,7 +47,9 @@ async function adminCreatedJob(email: any) {
 }
 
 async function deleteJob(job_id: any) {
-  let response = await axios.get(`${base_url}/api/job/deletejob/${job_id}`);
+  console.log("Delete req sent");
+
+  let response = await axios.delete(`${base_url}/api/job/deletejob/${job_id}`);
   return response;
 }
 

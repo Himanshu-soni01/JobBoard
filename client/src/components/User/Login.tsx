@@ -12,21 +12,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [isValidEmail, setIsValidEmail] = useState(true);
 
-  // function checkBreakpoint() {
-  //   if (window.matchMedia("(max-width: 600px)").matches) {
-  //     console.log(document.getElementById('my-div')?.classList);
-  //     document
-  //       .getElementById("my-div")
-  //       ?.classList.remove("login-image-container");
-  //     document.getElementById("my-div")?.classList.add("new");
-  //   } else {
-  //     document.getElementById("my-div")?.classList.remove("new");
-  //     document.getElementById("my-div")?.classList.add("login-image-container");
-  //   }
-  // }
-
-  // window.addEventListener("resize", checkBreakpoint);
-
   const validateEmail = (inputEmail: string) => {
     console.log(inputEmail);
     const jmanRegex = /^[a-zA-Z0-9._%+-]+@jmangroup\.com$/;
@@ -50,7 +35,6 @@ const Login = () => {
     LoginService.userLogin(email, password)
       .then((response: { statusText: string; data: { token: any; }; status: number; }) => {
         if (response.status == 200) {
-          console.log(response.data.token);
           // document.cookie = `token=${response.data.token}`;
           localStorage.setItem("email", email);
           toast.success("Login success", {

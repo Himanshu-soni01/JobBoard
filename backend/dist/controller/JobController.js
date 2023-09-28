@@ -16,11 +16,11 @@ class JobController {
             if (!availableJob) {
                 var job_details = {
                     title: title,
-                    description: description,
                     company: company,
                     location: location,
-                    salary: parseInt(salary),
-                    postedby: email,
+                    description: description,
+                    salary: salary,
+                    postedBy: email,
                 };
                 const created_job = await job_1.Job.create(job_details);
                 res.status(201).json(created_job);
@@ -64,6 +64,7 @@ class JobController {
             var check_applied_data = await userappliedjob_1.AppliedJob.findOne({
                 where: {
                     id: jobId.job_id,
+                    appliedBy: user_email
                 },
             });
             console.log("cap", check_applied_data);
@@ -77,6 +78,19 @@ class JobController {
         }
         catch (error) {
             throw error;
+        }
+    }
+    async deleteJob(req, res) {
+        try {
+            var jobId = await req.params;
+            console.log("BE req", jobId.jobid);
+            // await Job.destroy({
+            //   where: { id: jobId.jobid },
+            // });
+            res.status(200).json({ message: "Job deleted successfully" });
+        }
+        catch (error) {
+            console.log(error);
         }
     }
 }

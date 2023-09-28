@@ -1,18 +1,17 @@
-/* Import Section - Start */
-
-/* React Imports - Start */
-
+import { useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { Outlet } from "react-router-dom";
-
-/* React Imports -End */
-
-/* Import Section - End */
-
-/* Function - Start */
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Layout = () => {
-  /* Render View Return - Start */
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    var email = localStorage.getItem('email');
+    if (!email) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <>
       <Sidebar />
@@ -20,11 +19,6 @@ const Layout = () => {
     </>
   );
 
-  /* Render View Return - End */
 };
-
-/* Function - End */
-
-/* Export default functionName */
 
 export default Layout;
